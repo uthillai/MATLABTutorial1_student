@@ -21,7 +21,7 @@ xmax = yearstoplot(end);
 xlim([xmin xmax])
 
 %% Split data into training set and test set
-yearfortraintest=1990;
+yearfortraintest=2012; %Changed from 1990
 
 indices_train=years<=yearfortraintest;
 years_train = years(indices_train);
@@ -35,14 +35,14 @@ yearstoplot_test=yearstoplot(indices_test);
 
 %% Fit polynomials
 %Fit 1-degree polynomial
-[p1_all,~,mu1_all] = polyfit(years_train,temps_train,1);
-p1temps_train = polyval(p1_all,years_train,[],mu1_all); %evaluate polynomial
-hold on; xlim([yearstoplot_train(1) yearstoplot_train(end)]);
-f1 = plot(yearstoplot_train, p1temps_train,'r'); 
-xlim([yearstoplot_train(1) yearstoplot_train(end)]);
-R_squared_train1=1-sum((p1temps_train-temps_train).^2)/...
+[p1_all,~,mu1_all] = polyfit(years,temps,1);
+p1temps = polyval(p1_all,years,[],mu1_all); %evaluate polynomial
+hold on; xlim([yearstoplot(1) yearstoplot(end)]);
+f1 = plot(yearstoplot, p1temps,'r'); 
+xlim([yearstoplot(1) yearstoplot(end)]);
+R_squared=1-sum((p1temps-temps).^2)/...
     (((length(temps_train)-1) * var(temps_train)))
-norm2_train1=norm(p1temps_train-temps_train,2)
+norm2_=norm(p1temps-temps,2)
 
 %Fit 2-degree polynomial
 [p2_all,~,mu2_all] = polyfit(years_train,temps_train,2);
@@ -68,16 +68,16 @@ f1 = plot(yearstoplot_test, p1temps_test,'r-*');
 norm2_test1=norm(p1temps_test-temps_test,2)
 
 %test 2-degree polynomial
-p2temps_test = polyval(p2_all,years_test,[],mu2_all);
+p2temps = polyval(p2_all,years,[],mu2_all);
 hold on
-f2=plot(yearstoplot_test, p2temps_test,'b-*');
-norm2_test2=norm(p2temps_test-temps_test,2)
+f2=plot(yearstoplot, p2temps,'b-*');
+norm2_test2=norm(p2temps-temps,2)
 
 %test 3-degree polynomial
-p3temps_test = polyval(p3_all,years_test,[],mu3_all);
+p3temps = polyval(p3_all,years,[],mu3_all);
 hold on
-f3=plot(yearstoplot_test, p3temps_test,'m-*');
-norm2_test3=norm(p3temps_test-temps_test,2)
+f3=plot(yearstoplot, p3temps,'m-*');
+norm2_test3=norm(p3temps-temps,2)
 
 legend([f1,f2, f3],'1st-Degree','2nd-Degree','3rd-Degree','Location','NorthWest')
 

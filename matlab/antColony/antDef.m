@@ -70,21 +70,21 @@ classdef antDef < handle
                     nNearestFood=vectorNearestFood/(magnitudeNearestFood);
                 elseif magnitudeNearestFood<=antCurrent.vision %if ant is close to food, count how many ants are already eating that food
                     % Comment out these three lines for assignment
-                    antCurrent.foundFood=foodsourcenumber;
-                    antCurrent.friendDesire=0;
-                    nNearestFood=vectorNearestFood/(magnitudeNearestFood);
+                    %%%%antCurrent.foundFood=foodsourcenumber;
+                    %%%%antCurrent.friendDesire=0;
+                    %%%%nNearestFood=vectorNearestFood/(magnitudeNearestFood);
 
                     % CODE BELOW HERE
-%                     numAntsEating=???;
-%                     if numAntsEating < antCurrent.maxAntsEating %if less than maxAntsEating ants, go toward that food and eat it
-%                         nNearestFood=???; %continue toward food
-%                         antCurrent.foundFood=???;
-%                         antCurrent.foodDesire=???;
-%                         antCurrent.friendDesire=???;
-%                     elseif numAntsEating >= antCurrent.maxAntsEating %if maxAntsEating or more ants, go away from food and search for food in other direction
-%                         nNearestFood=???; %go in opposite direction
-%                         antCurrent.foodloc(foodsourcenumber,:)=???;
-%                     end
+                     numAntsEating=???;
+                     if numAntsEating < antCurrent.maxAntsEating %if less than maxAntsEating ants, go toward that food and eat it
+                         nNearestFood=???; %continue toward food
+                         antCurrent.foundFood=???;
+                         antCurrent.foodDesire=???;
+                         antCurrent.friendDesire=???;
+                     elseif numAntsEating >= antCurrent.maxAntsEating %if maxAntsEating or more ants, go away from food and search for food in other direction
+                         nNearestFood=???; %go in opposite direction
+                         antCurrent.foodloc(foodsourcenumber,:)=???;
+                     end
                 end
             end
                                         
